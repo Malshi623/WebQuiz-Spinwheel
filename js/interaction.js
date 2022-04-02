@@ -63,18 +63,19 @@ var interactionJSON = {
     "interactionData": [{
         "slides": [
 
+            /*question 1*/
             {
                 "name": "Question",
                 "questionData": {
                     "maxOptions": 5,
-                    "questionContent": "What are the skills good leaders need?",
+                    "questionContent": "A line which cuts a pair of parallel lines is called",
                     "optionType": "MCQ",
-                    "options": ["Strategic Thinking",
-                        "Planning and Delivery",
-                        "Persuasion and Influence",
-                        "All of the above"
+                    "options": ["tangent",
+                        "chord",
+                        "traversal",
+                        "intersector"
                     ],
-                    "answer": [3],
+                    "answer": [2],
                     "neutralAnswer": -1
                 },
                 "feedbackPanel": {
@@ -82,21 +83,22 @@ var interactionJSON = {
                     "wrong": { "textContent": "The answer is incorrect." },
                     "neutral": { "textContent": "" }
                 },
-                "questionPoints": 10
+                "questionPoints": 5
             },
 
+            /*question 2*/
             {
                 "name": "Question",
                 "questionData": {
                     "maxOptions": 5,
-                    "questionContent": "What are the skills good leaders need?",
+                    "questionContent": "An angle whose value is ____, is called complete angle.",
                     "optionType": "MCQ",
-                    "options": ["Strategic Thinking",
-                        "Planning and Delivery",
-                        "Persuasion and Influence",
-                        "All of the above"
+                    "options": ["180°",
+                        "240°",
+                        "360°",
+                        "none of the above"
                     ],
-                    "answer": [3],
+                    "answer": [2],
                     "neutralAnswer": -1
                 },
                 "feedbackPanel": {
@@ -104,84 +106,20 @@ var interactionJSON = {
                     "wrong": { "textContent": "The answer is incorrect." },
                     "neutral": { "textContent": "" }
                 },
-                "questionPoints": 10
+                "questionPoints": 5
             },
 
+            /*question 3*/
             {
                 "name": "Question",
                 "questionData": {
                     "maxOptions": 5,
-                    "questionContent": "What are the skills good leaders need?",
+                    "questionContent": "The areas of two similar triangles are 81 sq. cm and 49 sq. cm. Find the ratio of their corresponding heights.",
                     "optionType": "MCQ",
-                    "options": ["Strategic Thinking",
-                        "Planning and Delivery",
-                        "Persuasion and Influence",
-                        "All of the above"
-                    ],
-                    "answer": [3],
-                    "neutralAnswer": -1
-                },
-                "feedbackPanel": {
-                    "correct": { "textContent": "The answer is correct." },
-                    "wrong": { "textContent": "The answer is incorrect." },
-                    "neutral": { "textContent": "" }
-                },
-                "questionPoints": 10
-            },
-
-            {
-                "name": "Question",
-                "questionData": {
-                    "maxOptions": 5,
-                    "questionContent": "What are the skills good leaders need?",
-                    "optionType": "MCQ",
-                    "options": ["Strategic Thinking",
-                        "Planning and Delivery",
-                        "Persuasion and Influence",
-                        "All of the above"
-                    ],
-                    "answer": [3],
-                    "neutralAnswer": -1
-                },
-                "feedbackPanel": {
-                    "correct": { "textContent": "The answer is correct." },
-                    "wrong": { "textContent": "The answer is incorrect." },
-                    "neutral": { "textContent": "" }
-                },
-                "questionPoints": 10
-            },
-
-            {
-                "name": "Question",
-                "questionData": {
-                    "maxOptions": 5,
-                    "questionContent": "A good leader is the one who can-",
-                    "optionType": "MCQ",
-                    "options": ["Delegate his work",
-                        "Inspire his teammates",
-                        "Communicate clearly",
-                        "All of the above"
-                    ],
-                    "answer": [3],
-                    "neutralAnswer": -1
-                },
-                "feedbackPanel": {
-                    "correct": { "textContent": "The answer is correct." },
-                    "wrong": { "textContent": "The answer is incorrect." },
-                    "neutral": { "textContent": "" }
-                },
-                "questionPoints": 10
-            },
-
-
-            {
-                "name": "Question",
-                "questionData": {
-                    "maxOptions": 5,
-                    "questionContent": "Encouraging valuable feedback from the team improves leadership skills.",
-                    "optionType": "MCQ",
-                    "options": ["True",
-                        "False"
+                    "options": ["9:7",
+                        "7:9",
+                        "6:5",
+                        "81:49"
                     ],
                     "answer": [0],
                     "neutralAnswer": -1
@@ -194,59 +132,17 @@ var interactionJSON = {
                 "questionPoints": 5
             },
 
-
+            /*question 4*/
             {
                 "name": "Question",
                 "questionData": {
                     "maxOptions": 5,
-                    "questionContent": "Understanding your behavior's impact on organizational outcome is a core leadership skill.",
+                    "questionContent": "Consider ΔABD such that angle ADB = 20° and C is a point on BD such that AB=AC and CD=CA. Then the measure of angle ABC is",
                     "optionType": "MCQ",
-                    "options": ["True",
-                        "False"
-                    ],
-                    "answer": [0],
-                    "neutralAnswer": -1
-                },
-                "feedbackPanel": {
-                    "correct": { "textContent": "The answer is correct." },
-                    "wrong": { "textContent": "The answer is incorrect." },
-                    "neutral": { "textContent": "" }
-                },
-                "questionPoints": 5
-            },
-
-            {
-                "name": "Question",
-                "questionData": {
-                    "maxOptions": 5,
-                    "questionContent": "Learning agility means-",
-                    "optionType": "MCQ",
-                    "options": ["To know when to change course and help others to do so",
-                        "Being comfortable in your tasks",
-                        "Delegating work",
-                        "Effective communication"
-                    ],
-                    "answer": [0],
-                    "neutralAnswer": -1
-                },
-                "feedbackPanel": {
-                    "correct": { "textContent": "The answer is correct." },
-                    "wrong": { "textContent": "The answer is incorrect." },
-                    "neutral": { "textContent": "" }
-                },
-                "questionPoints": 20
-            },
-
-            {
-                "name": "Question",
-                "questionData": {
-                    "maxOptions": 5,
-                    "questionContent": "Effective leaders manage performance by-",
-                    "optionType": "MCQ",
-                    "options": ["Expecting nothing less than top-notch results",
-                        "Setting their expectations clearly and concisely",
-                        "Doing the same tasks and perfecting them, instead of learning new skills",
-                        "Expecting the team to work harder"
+                    "options": ["30°",
+                        "40°",
+                        "45°",
+                        "60°"
                     ],
                     "answer": [1],
                     "neutralAnswer": -1
@@ -256,19 +152,89 @@ var interactionJSON = {
                     "wrong": { "textContent": "The answer is incorrect." },
                     "neutral": { "textContent": "" }
                 },
-                "questionPoints": 10
+                "questionPoints": 5
             },
 
+            /*question 5*/
             {
                 "name": "Question",
                 "questionData": {
                     "maxOptions": 5,
-                    "questionContent": "Transformational leadership is a leadership style where leaders-",
+                    "questionContent": "If the length and breadth of a rectangle are increased by a% and b% respectively, then the area will be increased by",
                     "optionType": "MCQ",
-                    "options": ["Create an inspiring vision of the future and motivate their team to achieve it",
-                        "Struggle to know what to do when circumstances change",
-                        "Doubt the teamâ€™s ability to succeed",
-                        "Are highly motivated but fail to guide the team members"
+                    "options": ["(a-b+2ab/100)%",
+                        "(a+b+2ab/100)%",
+                        "(a+b+ab/100)%",
+                        "(a-b+ab/100)%"
+                    ],
+                    "answer": [2],
+                    "neutralAnswer": -1
+                },
+                "feedbackPanel": {
+                    "correct": { "textContent": "The answer is correct." },
+                    "wrong": { "textContent": "The answer is incorrect." },
+                    "neutral": { "textContent": "" }
+                },
+                "questionPoints": 5
+            },
+
+            /*question 6*/
+            {
+                "name": "Question",
+                "questionData": {
+                    "maxOptions": 5,
+                    "questionContent": "A, B and C can complete a piece of work in 14, 6 and 12 days respectively. Working together, they will complete the work in",
+                    "optionType": "MCQ",
+                    "options": ["19/9 days",
+                        "27 days",
+                        "28/9 days",
+                        "25/8 days"
+                    ],
+                    "answer": [2],
+                    "neutralAnswer": -1
+                },
+                "feedbackPanel": {
+                    "correct": { "textContent": "The answer is correct." },
+                    "wrong": { "textContent": "The answer is incorrect." },
+                    "neutral": { "textContent": "" }
+                },
+                "questionPoints": 5
+            },
+
+            /*question 7*/
+            {
+                "name": "Question",
+                "questionData": {
+                    "maxOptions": 5,
+                    "questionContent": "A shopkeeper purchases 15 mangoes for Rs. 10 and sells them at 10 mangoes for Rs. 15. Thus, he earns a profit of",
+                    "optionType": "MCQ",
+                    "options": ["50%",
+                        "75%",
+                        "80%",
+                        "125%"
+                    ],
+                    "answer": [3],
+                    "neutralAnswer": -1
+                },
+                "feedbackPanel": {
+                    "correct": { "textContent": "The answer is correct." },
+                    "wrong": { "textContent": "The answer is incorrect." },
+                    "neutral": { "textContent": "" }
+                },
+                "questionPoints": 5
+            },
+
+            /*question 8*/
+            {
+                "name": "Question",
+                "questionData": {
+                    "maxOptions": 5,
+                    "questionContent": "4950/6 + 112 x 1.75 = ? x 2",
+                    "optionType": "MCQ",
+                    "options": ["510.5",
+                        "505.2",
+                        "515.5",
+                        "none of the above"
                     ],
                     "answer": [0],
                     "neutralAnswer": -1
@@ -278,7 +244,53 @@ var interactionJSON = {
                     "wrong": { "textContent": "The answer is incorrect." },
                     "neutral": { "textContent": "" }
                 },
-                "questionPoints": 20
+                "questionPoints": 5
+            },
+
+            /*question 9*/
+            {
+                "name": "Question",
+                "questionData": {
+                    "maxOptions": 5,
+                    "questionContent": "If a certain sum of money can become 5 times of its principal in 10 years, then the rate of interest is",
+                    "optionType": "MCQ",
+                    "options": ["20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ],
+                    "answer": [2],
+                    "neutralAnswer": -1
+                },
+                "feedbackPanel": {
+                    "correct": { "textContent": "The answer is correct." },
+                    "wrong": { "textContent": "The answer is incorrect." },
+                    "neutral": { "textContent": "" }
+                },
+                "questionPoints": 5
+            },
+
+            /*question 10*/
+            {
+                "name": "Question",
+                "questionData": {
+                    "maxOptions": 5,
+                    "questionContent": "An amount of Rs. 10,000 becomes Rs. 20,736 in 2 years. If the rate of interest is compounded half yearly, what is the annual rate of interest?",
+                    "optionType": "MCQ",
+                    "options": ["25%",
+                        "20%",
+                        "40%",
+                        "30%"
+                    ],
+                    "answer": [2],
+                    "neutralAnswer": -1
+                },
+                "feedbackPanel": {
+                    "correct": { "textContent": "The answer is correct." },
+                    "wrong": { "textContent": "The answer is incorrect." },
+                    "neutral": { "textContent": "" }
+                },
+                "questionPoints": 5
             }
         ],
 
@@ -327,6 +339,9 @@ var interactionJSON = {
                 "size": ""
             },
             "audioSlideData": [
+                { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
+                { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
+                { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
