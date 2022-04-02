@@ -1,0 +1,510 @@
+.game-based-temp .clearfix {
+    clear: both;
+}
+
+.game-based-temp .float-left {
+    float: left;
+}
+
+.game-based-temp .float-right {
+    float: right;
+}
+
+.game-based-temp .left-panel {
+    height: 100%;
+    overflow: hidden;
+}
+
+.game-based-temp .left-panel.swap-this-content-left {
+    flex-direction: row;
+    order: 2;
+}
+
+.game-based-temp .img-text-type {
+    display: block;
+}
+
+.game-based-temp .video-sec {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.game-based-temp .video-sec video {
+    border: 0;
+}
+
+.game-based-temp .img-text-type .text-sec,
+.game-based-temp .img-text-type .video-sec,
+.game-based-temp .img-text-type .img-sec {
+    height: 50%;
+    overflow: hidden;
+}
+
+.game-based-temp .right-panel {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #132e44;
+    padding: 0 15px;
+    background-size: 100% 100%;
+}
+
+.game-based-temp .right-panel .question-text {
+    padding: 0 0px;
+    /* margin-bottom: 15px; */
+    /* -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1; */
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    margin-top: 6rem;
+}
+
+.game-based-temp .widget-content-panel .text-sec {
+    padding-bottom: 0px;
+    padding: 5%;
+}
+
+.game-based-temp .widget-content-panel .text-sec .text-content-added {
+    height: max-content;
+    max-height: 95%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 0 35px;
+}
+
+.game-based-temp .main-sec .text-sec {
+    padding: 0% 3%;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    padding-right: 1%;
+}
+
+.game-based-temp .main-sec .right-panel.text-sec {
+    background: #fff
+}
+
+.game-based-temp .text-sec ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.game-based-temp .question-text {
+    /* max-height: calc(100vh - 150px); */
+    min-height: 30vh;
+}
+
+.game-based-temp .question-text .question-text-scroll {
+    max-height: calc(100vh - 150px);
+    min-height: 30vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.question_title_cls {
+    margin-top: 5%
+}
+
+.ques_head_img {
+    font-weight: 700;
+    color: #3b576b;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;
+    /* padding: 5px 25px; */
+}
+
+.ques_head_bonus {
+    font-weight: 500;
+    color: #fff;
+    /* background-image: url(../images/bonus_green.png); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    display: none;
+    /* padding: 5px 20px; */
+}
+
+.ques_head_img_span {
+    position: absolute;
+    left: 15%;
+    top: 20%;
+    font-size: 18px;
+    color: #1E1344;
+}
+
+.ques_head_bonus .ques_head_img_span {
+    color: #fff;
+}
+
+.ques_head_bonus_img {
+    position: absolute;
+    right: -50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    animation-name: bounce_animation;
+    animation-timing-function: linear;
+    display: none;
+}
+
+.ques_head_bonus_img .ques_head_img_span {
+    color: #fff;
+}
+
+.ques_head_img_red {
+    display: none;
+}
+
+@keyframes bounce_animation {
+    0% {
+        display: none;
+    }
+    50% {
+        display: block;
+    }
+    100% {
+        display: none;
+    }
+}
+
+.container.mcq {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: normal;
+    color: #403f50;
+    letter-spacing: 1px;
+    padding: 15px 30px;
+}
+
+
+/* Hide the browser's default radio button */
+
+.container.mcq input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* Create a custom radio button */
+
+.container.mcq .checkmark {
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #b0b9c1;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* On mouse-over, add a grey background color */
+
+
+/* .container.mcq:hover input~.checkmark {
+    background-color: #fff;
+    border: 1px solid #a8a8a8;
+  } */
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.container.mcq .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.container.mcq input:checked~.checkmark:after {
+    display: block;
+}
+
+.container.mcq input:checked~.checkmark {
+    background: #091722;
+}
+
+
+/* Style the indicator (dot/circle) */
+
+.container.mcq .checkmark:after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 11px;
+    height: 11px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+li.active .container.mcq .checkmark:after {
+    background: #e7b000;
+}
+
+li.active.right .container.mcq .checkmark:after {
+    background: #e7b000;
+}
+
+li.active.wrong .container.mcq .checkmark:after {
+    background: #f44336;
+}
+
+
+/* The container */
+
+.container.mrq {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 15px 30px;
+    margin-bottom: 0px;
+    word-break: break-all;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.container.mrq input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom checkbox */
+
+.container.mrq .checkmark {
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: 1px solid #a8a8a8;
+    transform: translateY(-50%);
+}
+
+
+/* On mouse-over, add a grey background color */
+
+
+/* .container.mrq:hover input ~ .checkmark {
+    background-color: #ccc;
+  } */
+
+
+/* When the checkbox is checked, add a blue background */
+
+.container.mrq input:checked~.checkmark {
+    background-color: #fff;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.container.mrq .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmark when checked */
+
+.container.mrq input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the checkmark/indicator */
+
+.container.mrq .checkmark:after {
+    left: 0;
+    right: 0;
+    top: -2px;
+    bottom: 0;
+    margin: auto;
+    width: 8px;
+    height: 15px;
+    /* border: solid #0fd180; */
+    /* border-width: 0 3px 3px 0; */
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+li.active .container.mrq .checkmark:after {
+    border: solid #2196F3;
+    border-width: 0 3px 3px 0;
+}
+
+li.active.right .container.mrq .checkmark:after {
+    border: solid #0fd180;
+    border-width: 0 3px 3px 0;
+}
+
+li.active.wrong .container.mrq .checkmark:after {
+    border: solid #f44336;
+    border-width: 0 3px 3px 0;
+}
+
+.endDescbtn {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    .ques_head_img {
+        width: 45%;
+    }
+    .ques_head_img .ques_head_img_img {
+        width: 100%;
+    }
+    .ques_head_bonus_img {
+        width: 40%;
+        height: 40px;
+    }
+    .ques_head_bonus_img .ques_head_img_green {
+        width: 100%;
+        height: 100%;
+    }
+    .ques_head_bonus_img .ques_head_img_red {
+        width: 100%;
+        height: 100%;
+    }
+    .game-based-temp .question-text .question-text-scroll {
+        padding-bottom: 70px;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .footer-bottom-div {
+        padding-left: 35px;
+    }
+    .feedback-text-display {
+        margin: auto 15px;
+    }
+    .ques_head_img {
+        width: 45%;
+        height: 40px;
+    }
+    .ques_head_img .ques_head_img_img {
+        width: 100%;
+        height: 100%;
+    }
+    .ques_head_bonus_img {
+        width: 40%;
+        height: 40px;
+    }
+    .ques_head_bonus_img .ques_head_img_green {
+        width: 100%;
+        height: 100%;
+    }
+    .ques_head_bonus_img .ques_head_img_red {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 813px) and (orientation:landscape) {
+    .endDescbtn {
+        max-height: fit-content;
+        position: relative;
+        width: 15%;
+    }
+    .ques_head_img {
+        width: 25%;
+    }
+    .ques_head_img .ques_head_img_img {
+        width: 100%;
+    }
+    .ques_head_bonus_img {
+        width: 27%;
+    }
+    .ques_head_bonus_img .ques_head_img_green {
+        width: 100%;
+    }
+    .ques_head_bonus_img .ques_head_img_red {
+        width: 100%;
+    }
+    .question4,
+    #bbq4 {
+        top: 18% !important
+    }
+    .gameMessage {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) and (orientation:portrait) {
+    .question_title_cls {
+        margin-top: 20%;
+    }
+    .ques_head_img {
+        width: 40%;
+    }
+    .ques_head_img .ques_head_img_img {
+        width: 100%;
+    }
+    .ques_head_bonus_img {
+        width: 40%;
+    }
+    .ques_head_bonus_img .ques_head_img_green {
+        width: 100%;
+    }
+    .ques_head_bonus_img .ques_head_img_red {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 499px) and (orientation:portrait) {
+    .ques_head_bonus_img {
+        width: 40%;
+        height: 35px;
+    }
+    .ques_head_bonus_img .ques_head_img_green {
+        width: 100%;
+        height: 100%;
+    }
+    .ques_head_bonus_img .ques_head_img_red {
+        width: 100%;
+        height: 100%;
+    }
+}
