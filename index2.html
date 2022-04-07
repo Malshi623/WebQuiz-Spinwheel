@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Spin Wheel - Reach Your Goal Faster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+
+    <!-- //jquery.m -->
+    <script type="text/javascript" src="./js/jquery.m.js"></script>
+    <script src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/preload-assests.js"></script>
+    <script type="text/javascript" src="./js/interaction2.js"></script>
+    <!-- componentsLogic -->
+    <link rel="stylesheet" type="text/css" href="./interaction-component/introduction/intro.css" />
+    <link rel="stylesheet" type="text/css" href="./interaction-component/result/result.css" />
+    <link rel="stylesheet" type="text/css" href="./interaction-component/questionSection/questionSection.css" />
+    <script type="text/javascript" src="./interaction-component/globleSettingSection/windowResize.js"></script>
+    <script type="text/javascript" src="./interaction-component/introduction/intro.js"></script>
+    <script type="text/javascript" src="./interaction-component/globleSettingSection/startButtonSetting.js"></script>
+    <script type="text/javascript" src="./interaction-component/result/result.js"></script>
+    <script type="text/javascript" src="./interaction-component/questionSection/questionSection.js"></script>
+    <script type="text/javascript" src="./interaction-component/questionResultCal/answerSumbitedRight.js"></script>
+    <script type="text/javascript" src="./interaction-component/questionResultCal/wrongAnswerSelected.js"></script>
+    <script type="text/javascript" src="./interaction-component/questionResultCal/submitAnswerInstant.js"></script>
+    <script type="text/javascript" src="./interaction-component/questionResultCal/nextAnswer.js"></script>
+    <script type="text/javascript" src="./interaction-component/questionResultCal/questionResultVar.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/mobile-style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style-assesment.css" />
+    <link rel="stylesheet" type="text/css" href="./css/intro-closure.css" />
+    <link rel="stylesheet" type="text/css" href="./gameSection/gameSection.css" />
+    <script type="text/javascript" src="./gameSection/gameSection.js"></script>
+</head>
+
+
+<body id="interactionBody" class="" style="display: block;">
+
+    <audio id="checkpointaudio" class="checkpoint-audio" preload="auto" controls hidden>
+    <source src="./sounds/checkpoint.mp3" type="audio/mp3">
+  </audio>
+    <audio id="horseRun" class="cheering-audio" preload="auto" controls hidden>
+    <source src="./sounds/winGame.mp3" type="audio/mp3">
+  </audio>
+
+    <div class="top-tool-elements">
+        <!-- <div class="sound-on-off"></div> -->
+
+        <div class="question-count" role="gridcell" style="display: none;">
+            <img class="icon" src="./images/question.svg">
+            <span></span>
+        </div>
+        <div id="timeContainer" class="timerCounter" style="display: none;">
+            <img class="icon" src="./images/clock.svg">
+            <time id="timerValue">00:00:00</time>
+        </div>
+    </div>
+
+    <div id="interaction-audio" class="interaction-audio"></div>
+
+    <div class="main_section">
+
+        <section class="gamezone">
+
+
+        </section>
+        <section class="game-based-temp"></section>
+    </div>
+    <section class="result-screen"></section>
+
+    <script>
+        if (interactionJSON.interactionData[0].gameSectionFlag == true) {
+            gameSection()
+        }
+
+        var isSubaudio = false;
+        for (let i = 0; i < interactionJSON.interactionData[0].audioData.audioSlideData.length; i++) {
+
+            if (interactionJSON.interactionData[0].audioData.audioSlideData[i].src) {
+                isSubaudio = true;
+                break;
+            }
+        }
+        if (interactionJSON.interactionData[0].audioData.acrossAllSlides.src) {
+            audioIcon();
+        } else if (isSubaudio || interactionJSON.interactionData[0].audioData.introductionSlide.src || interactionJSON.interactionData[0].audioData.passResult.src || interactionJSON.interactionData[0].audioData.failResult.src) {
+            audioIcon();
+        }
+
+        if (interactionJSON.interactionData[0].introductionSlides[0].toggleFlag == true) {
+            introSection()
+        } else {
+            startAssesment()
+        }
+
+        $('.checkpoint-audio').click(function() {
+            $('.checkpoint-audio').each(function() {
+                if (pausedNot == true) {
+                    this.play()
+                    this.currentTime = 0;
+                }
+            })
+        })
+    </script>
+
+    <script src="./js/jquery.stopwatch.js "></script>
+    <!-- <script src="./js/skrollr.min.js"></script> -->
+    <script src="./js/jquery.mCustomScrollbar.js"></script>
+    <script src="./js/waypoints.min.js"></script>
+    <script src="./js/audio-transition-preview.js"></script>
+    <script type="text/javascript"></script>
+    <script>
+        var res = 0;
+        var firstQuestion = true;
+        var visitedDescTrueFalse = false;
+        var questionName = 0;
+        var descName = [];
+        var bonus = 0;
+        //questionResultCal()
+        //if (interactionJSON.interactionData[0].introductionSlides[0].toggleFlag == true) 
+        //alert(interactionJSON.interactionData[0].qustionflag)
+        if (interactionJSON.interactionData[0].questionflag == true) {
+            getOptions(0)
+                //result screen code added
+            if (interactionJSON.interactionData[0].resultScreen.resultScreenRequired === true) {
+                resultSection();
+            }
+        }
+        // getFeedbackOptions(0)
+    </script>
+    <script>
+        $(document).ready(function() {
+            //$('.game_bonus_first_text').text(interactionJSON.textConstant.Slides.REACHED_SUCCESSFULY)
+            if (interactionJSON.interactionData[0].introductionSlides[0].toggleFlag == true) {
+                $('.main_section').css('display', 'none');
+            } else {
+                $('.main_section').css('display', 'flex');
+            }
+            $('.mCustomScrollBox').removeAttr('tabindex');
+            $('.introduction-sec.slectedDiv').find('.introduction-logo-img').attr('tabindex', '2');
+            $('.introduction-sec.slectedDiv').find('.text-content-added').attr('tabindex', '2');
+            $('.introduction-sec.slectedDiv').find('.start-assessment').attr('tabindex', '2');
+
+
+
+        });
+
+        function playGameBtn() {
+            if ($(window).width() < 900) {
+                $(".gamezone").css("display", "block");
+                $(".game-based-temp").css("display", "none");
+                $(".footer-bottom-div").css("display", "none");
+                $(".footer-bottom-div").css("position", "absolute");
+                $(".bollon_img_c").css("opacity", "1");
+                $(".game-based-temp").css("opacity", "0");
+            } else {
+                $('.game-based-temp, .game-based-temp .footer-bottom-div, .feedback-text-display').css("width", "0%")
+                $('.gamezone').css("width", "100%");
+                $('.gamezone').css("pointerEvents", "auto");
+                $(".bollon_img_c").css("opacity", "1");
+                $(".game-based-temp").css("opacity", "0");
+                $('.game-alert').fadeIn();
+                setTimeout(function() {
+                    $('.game-alert').fadeOut();
+                }, 2000);
+            }
+
+
+            if (userAnswer == true || userAnswer == "true") {
+                answerSumbitedRight = true
+                    //gameStart()
+            } else {
+                //answerWrong()
+            }
+        }
+    </script>
+    <script>
+        $('.cheering-audio').click(function() {
+            $('.cheering-audio').each(function() {
+                this.play();
+            })
+        })
+
+        if ($(window).width() > 320 && $(window).width() < 900) {
+
+            if ($(window).width() > $(window).height()) {
+                mobileland = true;
+            } else {
+                mobileland = false;
+                ipadpro = true;
+            }
+
+        } else if ($(window).width() > 901 && $(window).width() < 1025) {
+            if ($(window).width() > $(window).height()) {
+                ipadland = true;
+            } else {
+                ipadland = false;
+            }
+        } else {
+            desktop = true;
+        }
+        var Spin_The_Wheel = true;
+        var target_sum = [];
+        var sum = 0;
+        var questionSelectedVal = 0;
+        var res = 0;
+        var degArr = [];
+        $(document).ready(function() {
+
+            //game section codeing start
+            var total_question_count = interactionJSON.interactionData[0].slides.length;
+            //var total_bollon = 10;
+            var numOfQuestion = 20;
+            var desgVal = 360 / total_question_count;
+
+            var diff = desgVal;
+            var minNo = 0;
+            rotCount = diff;
+            degArr.push(0)
+            for (i = 1; i <= total_question_count; i++) {
+                $(".mainDiv").append('<div class="num num-' + i + '" targetVal = "' + interactionJSON.interactionData[0].slides[i - 1].questionPoints + '" ><span class="spinValueNum">' + interactionJSON.interactionData[0].slides[i - 1].questionPoints + '</span> </div>')
+                $(".num-" + i).css("transform", "rotate(" + (desgVal * i) + "deg)");
+                degArr.push(rotCount);
+                rotCount = rotCount + desgVal;
+
+                if (minNo < interactionJSON.interactionData[0].slides[i - 1].questionPoints) {
+                    minNo = interactionJSON.interactionData[0].slides[i - 1].questionPoints;
+                }
+
+            }
+
+            degArr = degArr.reverse();
+            console.log(degArr)
+
+
+            if ($(window).width() < 993 && $(window).height() < 901) {
+                $(".mainDiv").css("width", "250px");
+                $(".mainDiv").css("height", "250px");
+            }
+            var d_actualpart_cal = ($(".mainDiv").width() * 3) / total_question_count;
+            $(".mainDiv div").css("min-width", d_actualpart_cal + "px");
+            if ($(window).width() < 993 && $(window).height() < 901) {
+                if (total_question_count == 5) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 66 + "px)");
+                } else if (total_question_count == 6) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 55 + "px)");
+                } else if (total_question_count == 7) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 48 + "px)");
+                } else if (total_question_count == 8) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 42 + "px)");
+                } else if (total_question_count == 9) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 37 + "px)");
+                } else if (total_question_count == 10) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 34 + "px)");
+                } else if (total_question_count == 11) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 30 + "px)");
+                } else if (total_question_count == 12) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 28 + "px)");
+                } else if (total_question_count == 13) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 26 + "px)");
+                } else if (total_question_count == 14) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 24 + "px)");
+                } else if (total_question_count == 15) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 23 + "px)");
+                } else if (total_question_count == 16) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 21 + "px)");
+                } else if (total_question_count == 17) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 19.5 + "px)");
+                } else if (total_question_count == 18) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 19 + "px)");
+                } else if (total_question_count == 19) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 18 + "px)");
+                } else if (total_question_count == 20) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 17.5 + "px)");
+                }
+
+            } else {
+                if (total_question_count == 5) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 110 + "px)");
+                } else if (total_question_count == 6) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 92 + "px)");
+                } else if (total_question_count == 7) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 80 + "px)");
+                } else if (total_question_count == 8) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 70 + "px)");
+                } else if (total_question_count == 9) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 62 + "px)");
+                } else if (total_question_count == 10) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 56 + "px)");
+                } else if (total_question_count == 11) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 50 + "px)");
+                } else if (total_question_count == 12) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 46 + "px)");
+                } else if (total_question_count == 13) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 42 + "px)");
+                } else if (total_question_count == 14) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 40 + "px)");
+                } else if (total_question_count == 15) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 38 + "px)");
+                } else if (total_question_count == 16) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 36 + "px)");
+                } else if (total_question_count == 17) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 34 + "px)");
+                } else if (total_question_count == 18) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 32 + "px)");
+                } else if (total_question_count == 19) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 30 + "px)");
+                } else if (total_question_count == 20) {
+                    $(".mainDiv div").css("left", "calc(50% - " + 28 + "px)");
+                }
+            }
+            //$(".mainDiv div").css("left", "calc(50% - " + ((36 * (total_question_count - 4)) - 16) + "px)");
+            //var abc = interactionJSON.interactionData[0].slides[0].questionPoints;
+            // alert(abc)
+            initApp();
+
+
+            if ($(window).width() == 375 && $(window).height() == 812) {
+                $(".targetValue").css("top", "25.5%");
+                $("#spinStop img").css("width", "50%");
+            } else if ($(window).width() > 790 && $(window).width() <= 812 && $(window).height() == 375) {
+
+                $(".targetValue").css("top", "0");
+                $(".roulet_round").css("width", "260px");
+                $(".roulet_round").css("height", "260px");
+                $("#spinStop img").css("width", "50%");
+                $(".targetValue").css("padding-top", "7px");
+                $(".gamezone").css("padding-top", "5px");
+            }
+
+            if (total_question_count > 15 && minNo > 999) {
+                $(".spinValueNum").css("writing-mode", "vertical-rl");
+                $(".spinValueNum").css("text-orientation", "upright");
+                $(".spinValueNum").css("font-size", "12px !important")
+            }
+            //passingPercent
+            //let leftTargetVal = $(".gamezone").width() ;
+            //let leftTargetVal = $(".targetValue").width();
+            //alert(leftTargetVal)
+            //$(".targetValue").css("left", leftTargetVal + "%");
+        });
+
+        function initApp() {
+            let $container = $(".container");
+            let $btn = $("#spin");
+            let $stopBtn = $("#spinStop img");
+            let spinIntervalFn;
+            let = spinCount = 0;
+            $btn.off().on("click", function() {
+                // $container.removeClass("spin-stop").addClass("spin-it");
+                wheelSpinStart();
+            });
+
+            function wheelSpinStart() {
+                spinIntervalFn = setInterval(function() {
+                    $container.css("transform", "rotate(" + spinCount + "deg)");
+                    spinCount++;
+                    if (spinCount >= 360) {
+                        spinCount = 0;
+                    }
+                }, 15);
+            }
+
+            function wheelSpinStop() {
+                clearTimeout(spinIntervalFn);
+            }
+
+            var minHeightArr = [];
+            var arrVisitedBonus = [];
+            var firsttimespin = true;
+
+
+            function getRotationDegrees(obj) {
+                var matrix = obj.css("-webkit-transform") ||
+                    obj.css("-moz-transform") ||
+                    obj.css("-ms-transform") ||
+                    obj.css("-o-transform") ||
+                    obj.css("transform");
+                if (matrix !== 'none') {
+                    var values = matrix.split('(')[1].split(')')[0].split(',');
+                    var a = values[0];
+                    var b = values[1];
+                    var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+                } else {
+                    var angle = 0;
+                }
+                return (angle < 0) ? angle + 360 : angle;
+            }
+
+            function closest(needle, haystack) {
+                return haystack.reduce((a, b) => {
+                    let aDiff = Math.abs(a - needle);
+                    let bDiff = Math.abs(b - needle);
+
+                    if (aDiff == bDiff) {
+                        return a > b ? a : b;
+                    } else {
+                        return bDiff < aDiff ? b : a;
+                    }
+                });
+            }
+            $stopBtn.off().on("click", function() {
+                $(".gameMessage").css("display", "none");
+                // transition: 0.4s linear all;
+                $container.css("transition", "0.4s linear all");
+                // $container.removeClass("spin-it").addClass("spin-stop");
+                // debugger
+                wheelSpinStop();
+                var deg = getRotationDegrees($container);
+                console.log("init Deg: ", deg);
+                var actual_deg = closest(deg, degArr)
+                console.log("Deg set to: ", actual_deg);
+                //transform: rotate(45 deg);
+                // $container.css("transform", "rotate(" + deg + "deg)");
+                /*         if (deg > actual_deg) {
+                            let actual_val_deg = deg - actual_deg;
+                            let a = getRotationDegrees($container);
+                            console.log("a", a);
+                            actual_deg - 
+                            $container.css("transform", "rotate(" + -actual_val_deg + "deg)");
+                            let aa = getRotationDegrees($container);
+                            console.log("aa", aa);
+                        } else {
+                            let actual_val_deg1 = actual_deg - deg;
+                            let a = getRotationDegrees($container);
+                            console.log("a", a);
+                            let aa = getRotationDegrees($container);
+                            console.log("aa", aa);
+                        } */
+
+                $container.css("transform", "rotate(" + actual_deg + "deg)");
+                //transition: 0.4s linear all
+                let aaa = getRotationDegrees($container);
+                //console.log("aaa" + aaa)
+                spinCount = actual_deg;
+                //$container.removeClass("spin-it").addClass("spin-stop");
+                //$(".mainDiv").css("transform", "rotate(" + actual_deg + "deg)")
+                $(".game-based-temp").css("pointer-events", "auto");
+                $(".gamezone").css("pointer-events", "none");
+                //background: #00000065;
+                //opacity: 0.5;
+                $(".game-based-temp").css("background", "transparent");
+                $(".game-based-temp").css("opacity", "1")
+                $(".num").each(function() {
+                    minHeightArr.push($(this).offset().top)
+                })
+
+                //var numbers = [1, 5, 2, -7, 13, 4];
+                // debugger
+                var minValue = minHeightArr.indexOf(Math.min.apply(Math, minHeightArr))
+                questionSelectedVal = minValue;
+                res = minValue + 1;
+
+                // $(".num-" + res).css("background", "#000");
+                //numblack
+                //  $(".num-" + res).addClass("numblack");
+                // $(".num-" + res + "::after").css("background", "green");
+                //debugger
+                // console.log(minValue);
+                // if ($(window).width() < 900) {
+                //     setTimeout(function() {
+                //         $(".gamezone").css("width", "0");
+                //         $(".game-based-temp").css("width", "100%");
+                //     }, 2000);
+                // }
+
+                if (firsttimespin == true) {
+                    getOptions(minValue)
+                    $(".game-based-temp").find(".right-panel").css("background", "transparent");
+                    // $(".feedback-text-display").css("position", "fixed");
+                    // target_sum.push(interactionJSON.interactionData[0].slides[minValue].questionPoints)
+                    minHeightArr = [];
+                    arrVisitedBonus.push(minValue)
+                    firsttimespin = false;
+                    if ($(window).width() < 900) {
+                        setTimeout(function() {
+                            $(".gamezone").css("width", "0");
+                            $(".game-based-temp").css("width", "100%");
+                        }, 2000);
+                    }
+                } else {
+
+                    if (jQuery.inArray(minValue, arrVisitedBonus) !== -1) {
+                        minHeightArr = [];
+
+                        //alert("allready visited");
+                        $(".visited_popup").css("display", "block")
+                        $(".mainDiv").css("transition", "0.2s ease forward");
+                        $("#spinStop").css("pointer-events", "none");
+                        $(".game-based-temp").css("background", "#00000065");
+                        $(".game-based-temp").css("opacity", "0.5");
+                        setTimeout(function() {
+                            $(".visited_popup").css("display", "hide");
+                            $("#spinStop").css("pointer-events", "auto");
+                        }, 3000);
+                        $(".game-based-temp").css("pointer-events", "none");
+                        $(".gamezone").css("pointer-events", "auto");
+                        if ($(window).width() < 900) {
+
+                            $(".gamezone").css("width", "100%");
+                            $(".game-based-temp").css("width", "0%");
+
+                        }
+                        $("#spin").click();
+                        return;
+                    } else {
+                        getOptions(minValue)
+                        minHeightArr = [];
+                        arrVisitedBonus.push(minValue)
+                        $(".game-based-temp").find(".right-panel").css("background", "transparent");
+                        //$(".feedback-text-display").css("position", "fixed");
+                        if ($(window).width() < 900) {
+                            setTimeout(function() {
+                                $(".gamezone").css("width", "0");
+                                $(".game-based-temp").css("width", "100%");
+                            }, 2000);
+                        }
+                        //   target_sum.push(interactionJSON.interactionData[0].slides[i].questionPoints)
+                    }
+
+                    // var sum = target_sum.reduce(function(a, b) {
+                    //     return a + b;
+                    // }, 0);
+
+                    // $(".targetValue").html(sum);
+
+
+                }
+                //alert(target_sum)
+
+
+
+            });
+
+        }
+
+
+        function nextquestion() {
+            $(".game-based-temp").css("pointer-events", "none");
+            $(".gamezone").css("pointer-events", "auto");
+            $(".mainDiv").css("transform", "rotate(0deg)");
+            //transition: 0.2s ease forward;
+            $(".mainDiv").css("transition", "0.2s ease forward")
+            $(".game-based-temp").css("background", "#00000065");
+            $(".game-based-temp").css("opacity", "0.5");
+            $(".num-" + res).css("background", "#000");
+            $(".num-" + res).addClass("numblack");
+            $(".feedback-text-display").css("position", "absolute");
+            if ($(window).width() > 900) {
+                $("#spin").click();
+            } else {
+                $(".game-based-temp").css("width", "0");
+                $(".gamezone").css("width", "100%");
+                $("#spin").click();
+            }
+        }
+
+        //getOptions(res - 1)
+        //getOptions(1)
+        $(".close_btn").click(function() {
+            $(".visited_popup").css("display", "none")
+        })
+        $(".close_btn_congra").click(function() {
+            $(".clscongra").css("display", "none")
+        })
+
+        $(".endGame").click(function() {
+            if (interactionJSON.interactionData[0].resultScreen.resultScreenRequired === true) {
+                $(".main_section").css("display", "none");
+                $(".result-screen").css("display", "block");
+                $(".top-tool-elements").css("opacity", "0");
+                $(".time-taken").html("")
+                var timerStopValue = $("#timerValue").text();
+                $(".time-taken").append(timerStopValue);
+            }
+        })
+
+
+
+        function scrollTop() {
+            window.scrollTo(0, 0);
+            $("body .main_section .game-based-temp .question-text").scrollTop(0);
+        }
+    </script>
+
+</body>
+
+</html>
