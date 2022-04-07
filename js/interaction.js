@@ -348,6 +348,7 @@ var interactionJSON = {
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
+                { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" },
                 { "src": "", "mode": "auto", "duration": "", "name": "", "size": "" }
             ]
         },
